@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+	<link rel="stylesheet" href="plugin/chalkboard/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Analyse des systèmes éducatifs
+
+###### Quelle action publique pour limiter les inégalités scolaires ? 
+
+<small>Nathanaël Friant
+
+2024-2025 </small>
+
+<aside class="notes"><p>Cette présentation suit le chapitre 5 du livre de Felouzis: </p>
+<p>Felouzis, G. (2024). <em>Les Inégalités scolaires</em>. Presses Universitaires de France. <a href="https://shs.cairn.info/numero/PUF_FELOU_2024_03">https://shs.cairn.info/numero/PUF_FELOU_2024_03</a></p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Introduction
+
+- Les inégalités scolaires relèvent de processus multi-factoriels
+- L'éducation scolaire est le fruit collectif de tous les acteurs
+- Trois types de politiques peuvent être distingués selon:
+    - les ressorts de l'action publique
+    - les instruments mobilisés
+    - les solutions préconisées
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Trois approches des politiques publiques
+
+1. **Politique de compensation** : donner plus à ceux qui ont moins
+2. **Politique d'obligation de résultats** : fixer des standards et évaluer
+3. **Politique de déségrégation** : lutter contre la ségrégation scolaire
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## I. Compenser les handicaps pour limiter les inégalités
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Les politiques de compensation
+
+- Donner plus de moyens aux établissements défavorisés
+- Exemple français: ZEP puis REP
+- Exemple belge: ZEP puis D+ puis encadrement différencié
+- Moyens supplémentaires de l'ordre de 10% en France
+- Application à l'enseignement obligatoire
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Mise en œuvre concrète
+
+- Encadrement renforcé: classes moins nombreuses
+- 2019: 20,8 élèves/classe en REP+ vs 23,9 hors éducation prioritaire
+- Dédoublement des classes de CP puis CE1 en REP+ puis REP
+- 12-13 élèves par classe en CP/CE1 vs 22 en moyenne
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Efficacité des politiques compensatoires
+
+- Résultats mitigés sur les acquis scolaires
+- Meuret (1994): élèves en ZEP réussissent moins bien
+- Stéfanou (2017): écarts ne se creusent pas mais ne se réduisent pas non plus
+- Évaluation du dédoublement des classes: effet positif en CP (16% de réduction des écarts en français, 38% en mathématiques)
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Limites des politiques compensatoires (1)
+
+1. **Effet stigmatisant** du classement (Merle, 2012)
+    
+    - Évitement des familles des classes moyennes
+    - Concentration des difficultés
+2. **Turnover des enseignants**
+    
+    - Enseignants moins expérimentés
+3. **Insuffisance des moyens** face aux effets de la ségrégation
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Limites des politiques compensatoires (2)
+
+>"Au lieu de penser en termes d'enseignement de compensation, nous devrions nous interroger sérieusement et systématiquement sur le milieu scolaire" (Bernstein, 1975)
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## II. Lutter contre les inégalités par l'obligation de résultats
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Les politiques d'obligation de résultats
+
+- Paradigme de l'_accountability_ (reddition de comptes)
+- Régulation par les résultats aux évaluations
+- Responsabilisation des acteurs de l'école
+- Exemple: No Child Left Behind (États-Unis, 2002)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### No Child Left Behind: principes
+
+- Conditionnement des fonds fédéraux aux résultats des élèves
+- Tests annuels en lecture et mathématiques (CE2-4ème)
+- Obligation de résultats pour chaque groupe d'élèves:
+    - Blancs, Noirs, Latino-Américains, Amérindiens, Asiatiques
+    - Primo-arrivants, élèves handicapés, élèves défavorisés
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Résultats de No Child Left Behind
+
+- Amélioration modeste des résultats globaux
+- Réduction significative des inégalités de réussite:
+    - Réduction des écarts entre élèves blancs et noirs
+    - Tendance à la baisse des inégalités depuis 1999
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Limites de No Child Left Behind (1)
+
+1. **_Teaching to the test_** (Malet, 2009)
+    
+    - Appauvrissement des apprentissages
+2. **Disparités d'application** selon les États (Gamoran, 2012)
+    
+    - Standards différents
+    - Qualification variable des enseignants
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Limites de No Child Left Behind (2)
+
+1. **Problèmes d'évaluation** (Ahn et Vigdor, 2013)
+    
+    - Nécessité d'évaluer l'évolution plutôt que le niveau
+    - Pertinence de l'évaluation au niveau de l'établissement
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Évolution: Every Student Succeeds Act (ESSA)
+
+- Promulguée en 2015 sous l'administration Obama
+- Mêmes instruments pour rendre l'éducation moins inégalitaire
+- Objectif explicite de limiter les inégalités scolaires
+- Favoriser l'accès à l'enseignement supérieur
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## III. S'attaquer aux sources: un objectif de déségrégation scolaire
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Politiques de déségrégation
+
+- Agir sur une source majeure des inégalités: la ségrégation scolaire
+- Exemple américain: politique de _busing_ (années 1970)
+    - Déconnexion entre lieu de résidence et lieu de scolarisation
+    - Transport des élèves pour équilibrer la composition des écoles
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Effets du _busing_ aux États-Unis
+
+- Forte désagrégation des écoles, notamment dans le Sud
+- 0,1% d'étudiants noirs dans les écoles blanches du Sud (1960) → 43,5% (fin des années 1980)
+</div></script></section><section ><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Résultats de la déségrégation scolaire (1)
+
+- Selon Orfield et Gandara (2010):
+    
+    - Amélioration modeste des résultats aux tests
+    - Nette amélioration des chances d'obtention du diplôme
+    - Meilleure réussite professionnelle
+    - Sans effet négatif sur les élèves blancs
+</div></script></section><section data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Résultats de la déségrégation scolaire (2)
+
+- Wells et Crain (1994):
+    
+    - Aspirations scolaires et professionnelles plus élevées
+    - Meilleure insertion dans des réseaux mixtes
+    - Accès plus fréquent aux statuts de cadres et professions libérales
+</div></script></section></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Difficultés de mise en œuvre
+
+- Phénomène de _white flight_ (fuite des familles blanches)
+- Opposition forte dans certaines villes (émeutes)
+- Difficultés d'application dans les pays à forte tradition de libre choix scolaire
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Perspectives: incitation plutôt que contrainte
+
+- Une étude dont je suis co-auteur (2008, 2012) sur la Communauté française de Belgique
+- Modulation du financement des établissements pour favoriser la mixité
+- Incitations pour:
+    - Les chefs d'établissement à diversifier leur public
+    - Les familles à choisir des établissements mixtes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Limites des politiques d'incitation
+
+- Problème de la ségrégation urbaine elle-même
+- Nécessité pour certains élèves de parcourir des distances importantes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Conclusion
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Synthèse des approches
+
+- **Politiques compensatoires** (REP): moyens supplémentaires sans objectifs précis
+- **Politiques d'obligation de résultats** (NCLB): objectifs clairs mais risque d'appauvrissement
+- **Politiques de désagrégation** (_busing_): agir sur les sources mais difficultés de mise en œuvre
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Perspectives
+
+- Nécessité d'une approche systémique des inégalités scolaires
+- Combinaison des différents leviers d'action
+- Importance d'agir sur les sources des inégalités:
+    - La ségrégation scolaire
+    - Les conditions d'enseignement
+    - La formation des enseignants
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Merci de votre attention
+
+### Des questions?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Références
+
+#### Source de la présentation
+Felouzis, G. (2024). _Les Inégalités scolaires_. Presses Universitaires de France. [https://shs.cairn.info/numero/PUF_FELOU_2024_03](https://shs.cairn.info/numero/PUF_FELOU_2024_03)
+
+<aside class="notes"><h4 id="références-citées">Références citées</h4>
+<p>Bernstein, B. (1975). <em>Langage et classes sociales</em>. Paris: Minuit.</p>
+<p>DEPP. (2019). <em>Les effectifs d&#39;élèves à chaque heure de cours dans le second degré en 2018</em> (Note d&#39;information n° 19.39).</p>
+<p>DEPP. (2021). <em>Évaluation de l&#39;impact de la réduction de la taille des classes de CP et de CE1 en REP+ sur les résultats des élèves et les pratiques des enseignants</em> (Document de travail n° 2021-E04).</p>
+<p>Duru-Bellat, M., Farges, G., &amp; van Zanten, A. (2022). <em>Sociologie de l&#39;école</em>. Paris: Armand Colin.</p>
+<p>Felouzis, G. (2003). La ségrégation ethnique au collège et ses conséquences. <em>Revue française de sociologie, 44</em>(3), 413-447.</p>
+<p>Felouzis, G. (2008). Systèmes éducatifs et inégalités scolaires: une perspective internationale. <em>SociologieS</em>.</p>
+<p>Frangi, D. (2008). Pour une comparaison des politiques d&#39;éducation prioritaire en Europe. Dans M. Demeuse et al. (Dir.), <em>Les Politiques d&#39;éducation prioritaire en Europe</em> (pp. 9-34). INRP.</p>
+<p>Friant, N. (2012). <em>Vers une école plus juste. Entre description, compréhension et gestion du système</em> [Thèse de doctorat]. Université de Mons.</p>
+<p>Friant, N., Demeuse, M., Aubert-Lotarski, A., &amp; Nicaise, I. (2008). Les politiques d&#39;éducation prioritaire en Belgique: deux modes de régulation des effets d&#39;une logique de marché. Dans M. Demeuse et al. (Dir.), <em>Les Politiques d&#39;éducation prioritaire en Europe</em> (pp. 87-132). INRP.</p>
+<p>Gamoran, A. (2012). Bilan et devenir de la loi No Child Left Behind aux États-Unis. <em>Revue française de pédagogie, 178</em>, 13-26.</p>
+<p>Malet, R. (2009). Former, réformer, transformer la main-d&#39;œuvre enseignante? Politiques comparées et expériences croisées anglo-américaines. <em>Éducation et sociétés, 23</em>, 91-122.</p>
+<p>Merle, P. (2012). <em>La Ségrégation scolaire</em>. Paris: La Découverte.</p>
+<p>Meuret, D. (1994). L&#39;efficacité de la politique des zones d&#39;éducation prioritaire dans les collèges. <em>Revue française de pédagogie, 109</em>, 41-64.</p>
+<p>Mons, N. (2007). <em>Les Nouvelles Politiques éducatives</em>. Paris: PUF.</p>
+<p>Mons, N. (2009). <em>Les Effets théoriques et réels de l&#39;évaluation standardisée</em>. Eurydice.</p>
+<p>Orfield, G., &amp; Gandara, P. (2010). Ségrégation résidentielle et scolaire aux États-Unis. L&#39;expérience du busing. <em>Informations sociales, 5</em>(161), 96-102.</p>
+<p>Piketty, T., &amp; Valdenaire, M. (2006). L&#39;impact de la taille des classes sur la réussite dans les écoles, collèges et lycées français. <em>Les Dossiers évaluations et statistiques</em> (n°173). Paris: DEPP.</p>
+<p>Rochex, J.-Y. (2019). L&#39;éducation prioritaire en France... et ailleurs: éléments d&#39;analyse pour une histoire qui reste à faire. <em>Administration et éducation, 164</em>(4), 11-16.</p>
+<p>Stéfanou, A. (2017). L&#39;éducation prioritaire. Scolarité des élèves au collège de 2007 à 2012. <em>Éducation et formations, 95</em>, 87-106.</p>
+<p>Wells, A. S., &amp; Crain, R. L. (1994). Perpetuation theory and the long-term effects of school desegregation. <em>Review of Educational Research, 64</em>(4), 531-555.</p>
+</div></aside></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/chalkboard/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+		  RevealChalkboard, 
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+				{ icon: '<i class="fa fa-pen-square"></i>',
+				title: 'Toggle chalkboard (B)',
+				action: 'RevealChalkboard.toggleChalkboard();'
+				},
+				{ icon: '<i class="fa fa-pen"></i>',
+				title: 'Toggle notes canvas (C)',
+				action: 'RevealChalkboard.toggleNotesCanvas();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"showNotes":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
